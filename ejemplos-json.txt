@@ -1,0 +1,192 @@
+// EJEMPLOS JSON - PROYECTO FOOD FAST
+
+// ================================================
+// CLIENTES
+// ================================================
+
+// Request - POST /clientes
+{
+  "nombres": "Juan",
+  "apellidos": "Pérez",
+  "telefono": "777-1234",
+  "direccion": "Calle 1 #123",
+  "correo": "juan.perez@email.com"
+}
+
+// Request - PUT /clientes/{id}
+{
+  "id": 1,
+  "nombres": "Juan Carlos",
+  "apellidos": "Pérez García",
+  "telefono": "777-4321",
+  "direccion": "Calle 1 #123 - Actualizado",
+  "correo": "juan.carlos@email.com"
+}
+
+// Response - Cliente
+{
+  "success": true,
+  "mensajes": ["Cliente guardado correctamente"],
+  "respuesta": {
+    "id": 1,
+    "nombres": "Juan",
+    "apellidos": "Pérez",
+    "telefono": "777-1234",
+    "direccion": "Calle 1 #123",
+    "correo": "juan.perez@email.com",
+    "fechaRegistro": "2026-05-30T10:00:00.000Z",
+    "pedidos": null
+  }
+}
+
+// ================================================
+// PRODUCTOS
+// ================================================
+
+// Request - POST /productos
+{
+  "nombre": "Hamburguesa Clásica",
+  "descripcion": "Hamburguesa con carne, lechuga, tomate y queso",
+  "precio": 25.00,
+  "categoria": "Comida Rápida",
+  "disponible": true
+}
+
+// Request - PUT /productos/{id}
+{
+  "id": 1,
+  "nombre": "Hamburguesa Clásica Premium",
+  "descripcion": "Hamburguesa con carne premium, lechuga, tomate, queso y tocino",
+  "precio": 30.00,
+  "categoria": "Comida Rápida",
+  "disponible": true
+}
+
+// Response - Producto
+{
+  "success": true,
+  "mensajes": ["Producto guardado correctamente"],
+  "respuesta": {
+    "id": 1,
+    "nombre": "Hamburguesa Clásica",
+    "descripcion": "Hamburguesa con carne, lechuga, tomate y queso",
+    "precio": 25.00,
+    "categoria": "Comida Rápida",
+    "disponible": true,
+    "detallesPedido": null
+  }
+}
+
+// ================================================
+// PEDIDOS
+// ================================================
+
+// Request - POST /pedidos
+{
+  "clienteId": 1,
+  "estado": "PENDIENTE",
+  "total": 58.00,
+  "detallesPedido": [
+    {
+      "productoId": 1,
+      "cantidad": 2,
+      "precioUnitario": 25.00,
+      "subtotal": 50.00
+    },
+    {
+      "productoId": 8,
+      "cantidad": 1,
+      "precioUnitario": 8.00,
+      "subtotal": 8.00
+    }
+  ]
+}
+
+// Request - PUT /pedidos/{id}
+{
+  "id": 1,
+  "estado": "PREPARANDO"
+}
+
+// Response - Pedido
+{
+  "success": true,
+  "mensajes": ["Pedido guardado correctamente"],
+  "respuesta": {
+    "id": 1,
+    "clienteId": 1,
+    "cliente": null,
+    "fechaPedido": "2026-05-30T10:05:00.000Z",
+    "estado": "PENDIENTE",
+    "total": 58.00,
+    "detallesPedido": [
+      {
+        "id": 1,
+        "pedidoId": 1,
+        "pedido": null,
+        "productoId": 1,
+        "producto": null,
+        "cantidad": 2,
+        "precioUnitario": 25.00,
+        "subtotal": 50.00
+      },
+      {
+        "id": 2,
+        "pedidoId": 1,
+        "pedido": null,
+        "productoId": 8,
+        "producto": null,
+        "cantidad": 1,
+        "precioUnitario": 8.00,
+        "subtotal": 8.00
+      }
+    ]
+  }
+}
+
+// ================================================
+// MESAS
+// ================================================
+
+// Request - POST /mesas
+{
+  "numeroMesa": 6,
+  "capacidad": 4,
+  "estado": "LIBRE"
+}
+
+// Request - PUT /mesas/{id}
+{
+  "id": 1,
+  "numeroMesa": 1,
+  "capacidad": 2,
+  "estado": "OCUPADA"
+}
+
+// Response - Mesa
+{
+  "success": true,
+  "mensajes": ["Mesa guardada correctamente"],
+  "respuesta": {
+    "id": 6,
+    "numeroMesa": 6,
+    "capacidad": 4,
+    "estado": "LIBRE"
+  }
+}
+
+// ================================================
+// RESPUESTA GENERAL
+// ================================================
+{
+  "success": true,
+  "mensajes": ["Operación completada"],
+  "respuesta": null
+}
+
+// Error
+{
+  "success": false,
+  "mensajes": ["Error al realizar la operación"],
+  "respuesta": null
+}
